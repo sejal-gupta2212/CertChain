@@ -1,0 +1,5 @@
+Certificate ID: CERT001
+Student Name: Rahul Sharma
+Course: BSc Computer Science
+Institution: Demo University
+Issue Date: 31-10-2026

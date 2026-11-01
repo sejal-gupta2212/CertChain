@@ -1,0 +1,182 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f3f6fc;
+  color: #17233b;
+}
+
+.navbar {
+  background: #102c62;
+  color: white;
+  padding: 18px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-label {
+  font-size: 13px;
+}
+
+.main {
+  max-width: 850px;
+  margin: 55px auto;
+  padding: 0 20px;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.hero-icon {
+  color: #2563eb;
+}
+
+.hero h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.hero p,
+.subtitle {
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.verification-card {
+  background: white;
+  padding: 35px;
+  border-radius: 16px;
+  box-shadow: 0 8px 35px rgba(0, 0, 0, 0.07);
+}
+
+.verification-card h2 {
+  margin-top: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  margin-top: 25px;
+}
+
+label {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+input[type="number"] {
+  padding: 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.upload-box {
+  border: 2px dashed #a6b9df;
+  background: #f8faff;
+  padding: 25px;
+  border-radius: 10px;
+  text-align: center;
+  color: #2563eb;
+}
+
+.upload-box input {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.upload-box p {
+  overflow-wrap: anywhere;
+}
+
+.upload-box small {
+  color: #64748b;
+}
+
+button {
+  padding: 15px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.result {
+  margin-top: 25px;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.valid {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.invalid {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.hash {
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #64748b;
+  font-size: 13px;
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    padding: 15px;
+  }
+
+  .nav-label {
+    display: none;
+  }
+
+  .main {
+    margin: 30px auto;
+  }
+
+  .verification-card {
+    padding: 22px;
+  }
+
+  .hero h1 {
+    font-size: 26px;
+  }
+}
