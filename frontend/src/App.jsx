@@ -154,23 +154,29 @@ const detectUserRole = async () => {
 
     const address = accounts[0];
 
-    const contract = new ethers.Contract(
-      CONTRACT_ADDRESS,
-      [
-        "function admin() view returns (address)",
-        "function authorizedInstitutions(address) view returns (bool)"
-      ],
-      provider
-    );
+    const sepoliaProvider = new ethers.JsonRpcProvider(
+  "https://ethereum-sepolia-rpc.publicnode.com"
+);
 
+const contract = new ethers.Contract(
+  CONTRACT_ADDRESS,
+  [
+    "function admin() view returns (address)",
+    "function authorizedInstitutions(address) view returns (bool)"
+  ],
+  sepoliaProvider
+);
+   console.log("Role check contract:", await provider.getNetwork(), CONTRACT_ADDRESS);
     const adminAddress = await contract.admin();
     const authorized =
       await contract.authorizedInstitutions(address);
 
-    console.log("Wallet:", address);
-    console.log("Admin:", adminAddress);
-    console.log("Authorized:", authorized);
-
+console.log("Contract:", CONTRACT_ADDRESS);
+console.log("Connected Wallet:", address);
+console.log("Admin:", adminAddress);
+console.log("Authorized:", authorized);
+    
+    
     if (address.toLowerCase() === adminAddress.toLowerCase()) {
       setUserRole("Admin");
     } else if (authorized) {
