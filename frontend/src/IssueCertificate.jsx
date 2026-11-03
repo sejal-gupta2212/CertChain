@@ -28,9 +28,9 @@ function IssueCertificate() {
       const provider = new ethers.BrowserProvider(window.ethereum);
       const network = await provider.getNetwork();
 
-      if (network.chainId !== 31337n) {
-        throw new Error("Switch MetaMask to Hardhat Local");
-      }
+      if (network.chainId !== 11155111n) {
+  throw new Error("Switch MetaMask to Sepolia");
+}
 
       const signer = await provider.getSigner();
       const address = await signer.getAddress();
