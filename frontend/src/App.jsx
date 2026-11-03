@@ -117,9 +117,9 @@ const [roleLoading, setRoleLoading] = useState(false);
       formData.append("certificate", file);
 
       const response = await axios.post(
-        "http://localhost:5000/api/verify",
-        formData
-      );
+  "https://certchain-backend-03cn.onrender.com/api/verify",
+  formData
+);
 
       setResult(response.data);
     } catch (error) {
