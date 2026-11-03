@@ -40,6 +40,25 @@ app.get("/", (req, res) => {
     message: "Certificate Verification API is running"
   });
 });
+app.get("/api/contract-status", async (req, res) => {
+  try {
+    const network = await provider.getNetwork();
+    const code = await provider.getCode(
+      process.env.CONTRACT_ADDRESS
+    );
+
+    res.json({
+      connected: code !== "0x",
+      chainId: network.chainId.toString(),
+      contractAddress: process.env.CONTRACT_ADDRESS
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      error: "Blockchain connection failed"
+    });
+  }
+});
 
 // Verify uploaded certificate
 app.post(
