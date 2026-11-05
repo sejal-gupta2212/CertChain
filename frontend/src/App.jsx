@@ -62,7 +62,7 @@ const [roleLoading, setRoleLoading] = useState(false);
     try {
       await window.ethereum.request({
         method: "wallet_switchEthereumChain",
-        params: [{ chainId: "0x7A69" }],
+        params: [{ chainId: "0xaa36a7" }],
       });
 
       alert("Hardhat Local selected!");
@@ -146,8 +146,8 @@ const detectUserRole = async () => {
 
     const network = await provider.getNetwork();
 
-    if (network.chainId !== 31337n) {
-      throw new Error("Please switch to Hardhat Local");
+    if (network.chainId !== 11155111n) {
+      throw new Error("Please connect to sepolia");
     }
 
     const accounts = await provider.send("eth_requestAccounts", []);

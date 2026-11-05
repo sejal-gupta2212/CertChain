@@ -16,9 +16,21 @@ function CertificateDetails() {
     setLoading(true);
 
     try {
-      const provider = new ethers.JsonRpcProvider(
-        "http://127.0.0.1:8545"
-      );
+      if (!window.ethereum) {
+        throw new Error("Please install or unlock MetaMask");
+      }
+
+      if (!id.trim() || !/^[1-9]\d*$/.test(id.trim())) {
+        throw new Error("Enter a valid Certificate ID");
+      }
+
+      const provider = new ethers.BrowserProvider(window.ethereum);
+
+      const network = await provider.getNetwork();
+
+      if (network.chainId !== 11155111n) {
+        throw new Error("Please switch MetaMask to Sepolia");
+      }
 
       const contract = new ethers.Contract(
         CONTRACT_ADDRESS,
@@ -30,12 +42,13 @@ function CertificateDetails() {
       );
 
       const count = await contract.certificateCount();
+      const certificateId = BigInt(id);
 
-      if (BigInt(id) < 1n || BigInt(id) > count) {
+      if (certificateId < 1n || certificateId > count) {
         throw new Error("Certificate ID not found");
       }
 
-      const cert = await contract.certificates(BigInt(id));
+      const cert = await contract.certificates(certificateId);
 
       setDetails({
         hash: cert[0],
@@ -43,7 +56,9 @@ function CertificateDetails() {
         date: new Date(Number(cert[2]) * 1000).toLocaleString(),
         valid: cert[3]
       });
+
     } catch (err) {
+      console.error("Fetch Details Error:", err);
       setError(err.shortMessage || err.message);
     } finally {
       setLoading(false);
@@ -56,6 +71,7 @@ function CertificateDetails() {
 
       <form onSubmit={fetchDetails}>
         <label>Certificate ID</label>
+
         <input
           type="number"
           min="1"

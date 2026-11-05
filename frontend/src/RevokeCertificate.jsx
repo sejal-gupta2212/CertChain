@@ -21,8 +21,8 @@ function RevokeCertificate() {
       const provider = new ethers.BrowserProvider(window.ethereum);
       const network = await provider.getNetwork();
 
-      if (network.chainId !== 31337n) {
-        throw new Error("Please switch to Hardhat Local");
+      if (network.chainId !== 11155111n) {
+        throw new Error("Please connect to sepolia");
       }
 
       const signer = await provider.getSigner();

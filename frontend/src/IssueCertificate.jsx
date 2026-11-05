@@ -27,6 +27,7 @@ function IssueCertificate() {
     try {
       const provider = new ethers.BrowserProvider(window.ethereum);
       const network = await provider.getNetwork();
+      console.log("Issue Certificate Chain ID:", network.chainId.toString());
 
       if (network.chainId !== 11155111n) {
   throw new Error("Switch MetaMask to Sepolia");
